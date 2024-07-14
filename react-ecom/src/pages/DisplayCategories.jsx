@@ -62,13 +62,13 @@ export default function DisplayCategories() {
   return (
     <div className="display-category">
       <div className="category">
-        {data.map((product) =>
+        {data.map((product) => (
           <div key={product.id}>
             <div id="body-category"> 
               <h2 onClick={fetchCategoriesItems}>{product}</h2>
             </div>
           </div>
-        )}
+        ))}
       </div>
       <div id="items">
         {fetchCategoriesItems()}
