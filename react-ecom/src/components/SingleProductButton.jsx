@@ -4,12 +4,12 @@ export default function SingleProductButton({fetchDeleteProduct, fetchUpdateProd
     
   return (
     <div className="buttonUser">
-        <button onClick={fetchDeleteProduct}>
-          DELETE
-        </button>
-        <button onClick={fetchUpdateProduct}>
-          UPDATE
-        </button>
+      <button onClick={fetchDeleteProduct}>
+        DELETE
+      </button>
+      <button onClick={fetchUpdateProduct}>
+        UPDATE
+      </button>
     </div>
   )
 }
