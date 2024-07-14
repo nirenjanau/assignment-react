@@ -1,10 +1,10 @@
 import React from 'react'
-
-import MenuIcon from '../asset/categories-icon.png'
-import Logo1 from '../asset/logo-icon.png'
-import Cart from '../asset/cart-icon.png'
-import User from '../asset/user-icon.png'
 import { Link } from "react-router-dom"
+
+import MenuIcon from '../assets/categories-icon.png'
+import Logo1 from '../assets/logo-icon.png'
+import Cart from '../assets/cart-icon.png'
+import User from '../assets/user-icon.png'
 
 import  '../assets/style.css'
 
