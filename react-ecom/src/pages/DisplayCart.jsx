@@ -1,11 +1,9 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
-
 import '../assets/style.css'
 
 import CartButtons from './CartButtons'
-
 
 export default function DisplayCart() {
   const [data, setData] = useState([])
@@ -23,7 +21,7 @@ export default function DisplayCart() {
       setData(data)
     })
     .catch(error => {
-      console.error("Errror fetching the data", error)
+      console.error('Errror fetching the data', error)
     })
   }
   
