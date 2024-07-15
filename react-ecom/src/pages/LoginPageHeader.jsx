@@ -8,7 +8,7 @@ export default function LoginPageHeader() {
         <header>
             <nav className="logo-image">
                 <img src={logo1} alt="Logo" width="3%" />
-                <img src={logo2} alt="Logo" width="3%"/>
+                <img src={logo2} alt="Logo" width="3%" />
             </nav>
         </header>
     )

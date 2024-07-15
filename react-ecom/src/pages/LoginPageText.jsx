@@ -1,11 +1,11 @@
 import  '../assets/style.css'
 
 export default function LoginPageText() {
-    return(
+    return (
         <div className="content-left">
             <h1 className="heading">
                 Dazzle 
-                <span  className="heading-drobe">
+                <span className="heading-drobe">
                     drobe
                 </span>
             </h1>

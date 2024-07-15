@@ -5,7 +5,6 @@ import SingleProductButton from '../components/SingleProductButton'
 
 import '../assets/style.css'
 
-
 export default function SingleProduct() {
   const [data, setData] = useState([])
 
@@ -90,7 +89,7 @@ export default function SingleProduct() {
         </div>
         <div className="product-details">
           <h1>{data.title}</h1>
-          <h2>CATEGORY : {data.category} </h2>
+          <h2>CATEGORY : {data.category}</h2>
           <h2>DISCRIPTION : {data.description}</h2>
           <div className="button-product">
             <h2 className="price">Buy:${data.price}</h2>
