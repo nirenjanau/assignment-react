@@ -1,7 +1,7 @@
 
-import LoginContent from '.LoginContent'
-import LoginPageHeader from '.LoginPageHeader'
-import LoginPageText from '.LoginPageText'
+import LoginContent from './LoginContent'
+import LoginPageHeader from './LoginPageHeader'
+import LoginPageText from './LoginPageText'
 import SignUpContent from './SignUpContent'
 
 export  default function LoginPage() {

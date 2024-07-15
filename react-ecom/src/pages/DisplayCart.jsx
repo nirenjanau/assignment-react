@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 
 import '../assets/style.css'
 
-import CartButtons from './CartButtons'
+import CartButtons from '../components/CartButtons'
 
 export default function DisplayCart() {
   const [data, setData] = useState([])
