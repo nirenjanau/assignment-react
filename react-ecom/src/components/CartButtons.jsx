@@ -2,7 +2,7 @@ import '../assets/style.css'
 
 export default function CartButtons({handleDateRange, handleLimit, handleSort, handleUserCart, fetchAdd}) {
   return (
-    <div className="buttonCart">
+    <div className="button-cart">
       <button onClick={handleLimit}>
         LIMIT
       </button>

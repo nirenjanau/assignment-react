@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function SingleCartButton({fetchDeleteCart, fetchUpdateCart}) {
   return (
-    <div className="buttonCart">
+    <div className="button-cart">
       <button onClick={fetchDeleteCart}>
         DELETE
       </button>
