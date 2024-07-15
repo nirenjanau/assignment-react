@@ -3,7 +3,7 @@ import '../assets/style.css'
 
 export default function Button({handleLimit, handleSort, fetchAdd}) {
   return (
-    <div className="buttonUser">
+    <div className="button-user">
       <button onClick={handleLimit}>
         LIMIT
       </button>
