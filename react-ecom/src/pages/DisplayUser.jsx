@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 import Button from '../components/Button'
 
@@ -8,36 +9,26 @@ import  '../assets/style.css'
 
 export default function DisplayUser() {
   const [users, setUser] = useState([])
-  const [limit, setLimit] = useState(false)
-  const [sort, setSort] = useState(false)
 
   useEffect(() => {
     fetchData()          
   }, [])
 
-  const fetchData = (url = 'https://fakestoreapi.com/users') => {
-    fetch(url)
-    .then(response => response.json())
-    .then(users => {
-      console.log(users)
-      setUser(users)
-      console.log(users)
-    })
-    .catch(error => {
-      console.error('Errror fetching the data', error)
-    })
+  const fetchData = () => {
+    getFetch('https://fakestoreapi.com/users')
   }
 
   const handleLimit = () => { 
-    fetchData('https://fakestoreapi.com/users?limit=5')
-    setLimit(true)
-    setSort(false)
+    getFetch('https://fakestoreapi.com/users', {
+      limit:5
+    })
+    
   }
 
   const handleSort = () => { 
-    fetchData('https://fakestoreapi.com/users?sort=desc')
-    setLimit(false)
-    setSort(true)
+    getFetch('https://fakestoreapi.com/users', {
+      sort: 'desc'
+    })
   }
   
   const fetchAdd = () => {
@@ -82,6 +73,17 @@ export default function DisplayUser() {
       console.error('error fetching data', error)
     })
   }
+
+  function getFetch(url, params = {}) {
+    return axios ( {
+      url: url,
+      method:'GET',
+      params: params
+    })
+      .then(response => response.data)
+      .then(user => setUser(user))
+    }
+  
 
   return (
     <div className='container-user'>

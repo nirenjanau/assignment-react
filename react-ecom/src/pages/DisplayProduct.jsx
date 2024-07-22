@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { useEffect } from 'react'
+import axios from 'axios'
+
 
 import Button from '../components/Button'
 
@@ -8,22 +10,13 @@ import  '../assets/style.css'
 
 export default function DisplayProducts() {
   const [data, setData] = useState([])
-  const [limit, setLimit] = useState(false)
-  const [sort, setSort] = useState(false)
 
   useEffect(() => {
     fetchData()
   }, [])
   
-  const fetchData = (url = 'https://fakestoreapi.com/products') => {
-    fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      setData(data)
-    })
-    .catch(error => {
-      console.error('Errror fetching the data', error)
-    })
+  const fetchData = () => {
+		getFetch('https://fakestoreapi.com/products')
   }
 
   const fetchAdd = () => {
@@ -50,14 +43,28 @@ export default function DisplayProducts() {
   }
 
   const handleLimit = () => {
-    fetchData('https://fakestoreapi.com/products?limit=5')
-    setLimit(true) 
+    getFetch('https://fakestoreapi.com/products', {
+			limit: 5
+		})
   }
 
   const handleSort = () => {
-    fetchData('https://fakestoreapi.com/products?sort=desc')
-    setSort(true) 
+    getFetch('https://fakestoreapi.com/products', {
+			sort: 'desc'
+		})
   }
+
+
+	function getFetch(url, params = {}) {
+	return axios ( {
+		url: url,
+		method:'GET',
+		params: params
+	})
+		.then(response => response.data)
+		.then(data => setData(data))
+	}
+
   
   return(
     <div className="container-product">

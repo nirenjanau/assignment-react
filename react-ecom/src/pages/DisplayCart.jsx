@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import axios from 'axios'
 
 import '../assets/style.css'
 
@@ -7,32 +8,39 @@ import CartButtons from '../components/CartButtons'
 
 export default function DisplayCart() {
   const [data, setData] = useState([])
-  const [limit, setLimit] = useState(false)
-  const [sort, setSort] = useState(false)
-  
+
   useEffect(() => {
     fetchCart()
   }, [])
 
-  const fetchCart = (url = 'https://fakestoreapi.com/carts') => {
-    fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      setData(data)
-    })
-    .catch(error => {
-      console.error('Errror fetching the data', error)
-    })
+  const fetchCart = () =>{
+    getFetch('https://fakestoreapi.com/carts')
   }
   
   const handleLimit = () => {
-    fetchCart('https://fakestoreapi.com/carts?limit=5')
-    setLimit(true) 
+    getFetch('https://fakestoreapi.com/carts',{
+      limit: 5
+    })
+    
   }
 
   const handleSort = () => {
-    fetchCart('https://fakestoreapi.com/carts?sort=desc')
-    setSort(true) 
+    getFetch('https://fakestoreapi.com/carts', {
+      sort:'desc'
+    })
+  
+  }
+  const handleDateRange = () => {
+    getFetch('https://fakestoreapi.com/carts', {
+      startdate: '2019-12-10',
+      enddate:'2020-10-10'
+    })
+  }
+
+  const handleUserCart = () => {
+    getFetch('https://fakestoreapi.com/carts', {
+      user:2
+    })
   }
   
   const fetchAdd = () => {
@@ -60,13 +68,15 @@ export default function DisplayCart() {
     })
   }
 
-  const handleDateRange = () => {
-    fetchCart('https://fakestoreapi.com/carts?startdate=2019-12-10&enddate=2020-10-10')
-  }
-
-  const handleUserCart = () => {
-    fetchCart('https://fakestoreapi.com/carts/user/2')
-  }
+  function getFetch(url, params = {}) {
+    return axios ( {
+      url: url,
+      method:'GET',
+      params: params
+    })
+      .then(response => response.data)
+      .then(data => setData(data))
+    }
 
   return (
     <div className="container-cart">

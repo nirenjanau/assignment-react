@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom'
 import '../assets/style.css'
 
 export default function DisplayCategories() {
-  const [data, setData] = useState([])
   const [item, setItems] = useState([])
+  const [data, setData] = useState([])
+
   
   useEffect(() => {
     fetch('https://fakestoreapi.com/products/categories')
@@ -27,6 +28,15 @@ export default function DisplayCategories() {
     .catch(error => {
       console.error('Error fetching the data', error)
     })
+    function getFetch(url, params = {}) {
+      return axios ({
+        url: url,
+        method:'GET',
+        params: params
+      })
+        .then(response => response.data)
+        .then(data => setData(data))
+      }
 
     return (
       <div className="display-product">
